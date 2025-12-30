@@ -1,0 +1,214 @@
+:root {
+  --color-bg-primary: #0f172a;
+  --color-bg-secondary: #1e293b;
+  --color-accent: #8b5cf6;
+  --color-accent-hover: #7c3aed;
+  --color-text-primary: #f8fafc;
+  --color-text-secondary: #94a3b8;
+  --color-success: #10b981;
+  --color-danger: #ef4444;
+  --glass-bg: rgba(30, 41, 59, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--color-bg-primary);
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.1) 0px, transparent 50%);
+  background-attachment: fixed;
+  color: var(--color-text-primary);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding-top: 5rem;
+}
+
+/* App Container */
+.app-container {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 1rem;
+}
+
+.app-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  text-align: center;
+  background: linear-gradient(to right, #8b5cf6, #3b82f6);
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: -0.05em;
+}
+
+/* Input Section */
+.todo-input-container {
+  position: relative;
+  margin-bottom: 2rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.todo-input {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 1rem;
+  color: white;
+  font-size: 1rem;
+  backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.todo-input:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.1);
+}
+
+.add-btn {
+  padding: 0 1.5rem;
+  background: var(--color-accent);
+  color: white;
+  border-radius: 1rem;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.add-btn:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-1px);
+}
+
+/* Todo List */
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--color-text-secondary);
+  margin-top: 2rem;
+  font-style: italic;
+}
+
+/* Todo Item */
+.todo-item {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 1rem;
+  backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+  animation: slideIn 0.3s ease-out;
+}
+
+.todo-item:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.todo-item.completed {
+  opacity: 0.6;
+}
+
+.todo-item.completed .todo-text {
+  text-decoration: line-through;
+  color: var(--color-text-secondary);
+}
+
+.todo-text {
+  flex: 1;
+  margin: 0 1rem;
+  font-size: 1.1rem;
+}
+
+/* Checkbox */
+.checkbox-container {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+}
+
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 24px;
+  width: 24px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  border: 2px solid var(--color-text-secondary);
+  transition: all 0.2s;
+}
+
+.checkbox-container:hover input ~ .checkmark {
+  border-color: var(--color-accent);
+}
+
+.checkbox-container input:checked ~ .checkmark {
+  background-color: var(--color-success);
+  border-color: var(--color-success);
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.checkbox-container .checkmark:after {
+  left: 7px;
+  top: 3px;
+  width: 6px;
+  height: 12px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* Delete Button */
+.delete-btn {
+  background: transparent;
+  color: var(--color-text-secondary);
+  font-size: 1.5rem;
+  padding: 0 0.5rem;
+  opacity: 0;
+  transition: all 0.2s;
+}
+
+.todo-item:hover .delete-btn {
+  opacity: 1;
+}
+
+.delete-btn:hover {
+  color: var(--color-danger);
+  transform: scale(1.1);
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
