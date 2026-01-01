@@ -2,8 +2,6 @@
 
 A premium, interactive Todo application built with React and Vite, featuring a modern glassmorphism UI.
 
-![Todo App](./screenshot.png)
-
 ## 🚀 Features
 
 *   **Modern UI**: Glassmorphism design with dynamic gradients and animations.
