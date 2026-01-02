@@ -51,6 +51,12 @@ Follow these guides in order:
 3.  **[Part 3: Add Load Balancer (ALB)](./DEPLOY_ALB.md)**
     *   Attach an Application Load Balancer to distribute traffic and provide a stable URL.
 
+### 3. Kubernetes Deployment (EKS) 🚀
+Deploy to Amazon Elastic Kubernetes Service (EKS) using modern practices.
+*   **[Read the EKS Deployment Guide](./DEPLOY_EKS.md)**
+*   Covers both **Standard EC2 Node Groups** and the new **EKS Auto Mode**.
+*   Includes `kubectl` and `eksctl` instructions.
+
 ---
 
 ## 📁 Project Structure

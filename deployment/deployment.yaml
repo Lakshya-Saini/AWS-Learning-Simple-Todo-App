@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-react-app
+  labels:
+    app: todo-react-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: todo-react-app
+  template:
+    metadata:
+      labels:
+        app: todo-react-app
+    spec:
+      containers:
+        - name: todo-react-app
+          image: lakshya273/todo-react-app:v1
+          ports:
+            - containerPort: 80
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
